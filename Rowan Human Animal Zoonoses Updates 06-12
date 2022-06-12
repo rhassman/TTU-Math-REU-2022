@@ -1,0 +1,150 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% SIR Epidemic Model
+% with disease-relatd deaths
+% Sample Paths for CTMC  models
+% ODE model:
+% ds/dt=-beta is/N;
+% di/dt= beta is/N-(gam +alp)*i;
+% dr/dt= gam*i;
+% %%%%%%%%%%%%%%%%%%%%%%%%
+clear all
+close all
+set(0,'DefaultAxesFontSize', 18)
+set(gca,'fontsize',18);
+%Parameters and Initial Condition
+beta_aa=.3; beta_ah=.2; beta_hh=.2; mu_a=1/360; gamma_a=.1;
+alpha_a=0; alpha_h=.05; gamma_h=.1;lambda_a=.5; % 
+% Initial values
+Sh0=500; Nh0=500; Ih0=0; Rh0=0;
+Na0=180; Sa0=178; Ia0=2;Ra0=0;
+R0=beta_aa/(gamma_a+alpha_a+mu_a); % basic reprod number
+totext=0; % count when i==0;
+%Number of sampe paths, time step, and end time
+sim=10^5; 
+dt=0.01; time=50;  outbreak=100;
+%sim=10^5; %use for calc of dis extinction
+% ODE Model (Euler's Method)
+y(1)=Ih0; x(1)=Nh0-Ih0; z(1)=Rh0; w(1)=Sh0; v(1)=Ia0; q(1)=Ra0; 
+Nh=x(1)+y(1)+z(1);Na=w(1)+v(1)+q(1);
+for k=1:time/dt
+  a1=lambda_a-(beta_aa*w(k)*v(k)/Na)-mu_a*w(k);
+  a2=(beta_aa*w(k)*v(k)/Na)-(gamma_a+alpha_a)*v(k);
+  a3=gamma_a*v(k)-mu_a*q(k);
+  h1=(-beta_ah*x(k)*v(k)/Nh)-beta_hh*x(k)*y(k)/Nh;
+  h2=(beta_ah*x(k)*v(k)/Nh)+(beta_hh*x(k)*y(k)/Nh)-(gamma_h+alpha_h)*y(k);
+  h3=gamma_h*y(k);
+  w(k+1)=w(k)+dt*a1;
+  v(k+1)=v(k)+dt*a2;
+  q(k+1)=q(k)+dt*a3;
+  x(k+1)=x(k)+dt*h1;
+  y(k+1)=y(k)+dt*h2;
+  z(k+1)=z(k)+dt*h3;
+  Na=w(k+1)+v(k+1)+q(k+1);
+  Nh=x(k+1)+y(k+1)+z(k+1);
+end
+
+%CTMC Model (Gillespie's algorithm)
+for k=1:sim
+clear sh ih rh sa ia ra t Nh Na
+t(1)=0; ia(1)=Ia0; sa(1)=Na0; ra(1)=Ra0; ih(1)=Ih0; sh(1)=Sh0; rh(1)=Rh0;
+j=1;
+%while  ia(j)>0 && t(j)<time % graph sample paths sim=5
+while    ia(j)+ih(j)>0 && ia(j)+ih(j)<outbreak %calculate  Dis. Ext. sim=10^5
+  u1=rand;  u2=rand; % two uniform random numbers
+  Na=sa(j)+ia(j)+ra(j);
+  Nh=sh(j)+ih(j)+rh(j);
+  sum=(beta_ah*sh(j)*ia(j)/Nh)+(beta_aa*sa(j)*ia(j)/Na)+(beta_hh*sh(j)*ih(j)/Nh)+lambda_a+mu_a*(sa(j)+ia(j)+ra(j))+gamma_a*ia(j)+alpha_a*ia(j)+gamma_h*ih(j)+alpha_h*ih(j); %sum of all rates
+  ev1=lambda_a/sum; % animal birth
+  ev2=beta_aa*sa(j)*ia(j)/(Na*sum)+ev1;% Animal to animal infection
+  ev3=mu_a*sa(j)/sum+ev2;% S animal death
+  ev4=gamma_a*ia(j)/sum+ev3; % animal recovery
+  ev5=(alpha_a+mu_a)*ia(j)/sum+ev4; % I animal death
+  ev6=(mu_a*ra(j))/sum+ev5; %recovered animal death
+  ev7=((beta_ah*sh(j)*ia(j))+(beta_hh*sh(j)*ih(j)))/(Nh*sum)+ev6;%human infection
+  ev8=gamma_h*ih(j)/sum+ev7; %human recovery
+  ev9=alpha_h*ih(j)/sum+ev8; %human death
+  %check ev2=1;
+  t(j+1)=t(j)-log(u1)/sum;
+  if u2 <= ev1; % animal birth
+    sa(j+1)=sa(j)+1;
+    ia(j+1)=ia(j);
+    ra(j+1)=ra(j);
+    sh(j+1)=sh(j);
+    ih(j+1)=ih(j);
+    rh(j+1)=rh(j);
+  elseif u2>ev1 && u2<=ev2; %Animal to animal infection
+    sa(j+1)=sa(j)-1;
+    ia(j+1)=ia(j)+1;
+    ra(j+1)=ra(j);
+    sh(j+1)=sh(j);
+    ih(j+1)=ih(j);
+    rh(j+1)=rh(j);
+  elseif u2>ev2 && u2<=ev3; %S animal death
+    sa(j+1)=sa(j)-1;
+    ia(j+1)=ia(j);
+    ra(j+1)=ra(j); 
+    sh(j+1)=sh(j);
+    ih(j+1)=ih(j);
+    rh(j+1)=rh(j);
+   elseif u2>ev3 && u2<=ev4; % animal recovery
+    sa(j+1)=sa(j);
+    ia(j+1)=ia(j)-1;
+    ra(j+1)=ra(j)+1;
+    sh(j+1)=sh(j);
+    ih(j+1)=ih(j);
+    rh(j+1)=rh(j);
+  elseif u2>ev4 && u2<=ev5; %I animal death
+    sa(j+1)=sa(j);
+    ia(j+1)=ia(j)-1;
+    ra(j+1)=ra(j); 
+    sh(j+1)=sh(j);
+    ih(j+1)=ih(j);
+    rh(j+1)=rh(j);
+   elseif u2>ev5 && u2<=ev6; %recovered animal death
+    sa(j+1)=sa(j);
+    ia(j+1)=ia(j);
+    ra(j+1)=ra(j)-1;
+    sh(j+1)=sh(j);
+    ih(j+1)=ih(j);
+    rh(j+1)=rh(j);
+  elseif u2>ev6 && u2<=ev7; %human infection
+    sh(j+1)=sh(j)-1;
+    ih(j+1)=ih(j)+1;
+    rh(j+1)=rh(j);
+    sa(j+1)=sa(j);
+    ia(j+1)=ia(j);
+    ra(j+1)=ra(j);
+   elseif u2>ev7 && u2<=ev8; % human recovery 
+    sh(j+1)=sh(j);
+    ih(j+1)=ih(j)-1;
+    rh(j+1)=rh(j)+1;
+    sa(j+1)=sa(j);
+    ia(j+1)=ia(j);
+    ra(j+1)=ra(j);
+  elseif u2>ev8 && u2<=ev9; %human death
+    sh(j+1)=sh(j);
+    ih(j+1)=ih(j)-1;
+    rh(j+1)=rh(j); 
+    sa(j+1)=sa(j);
+    ia(j+1)=ia(j);
+    ra(j+1)=ra(j);
+  end
+  j=j+1;
+end  
+if k<=5
+stairs(t,ih,'color',rand(1,3),'Linewidth',2);
+hold on
+end
+if ih(j)==0
+    totext=totext+1;
+end
+end
+%probDisExt=totext/sim %estimate for no outbreak, disease extinction
+probDisExt_est=(1/R0)^Ia0
+simDisExt=totext/sim
+plot([0:dt:time],y,'k--','LineWidth',2);
+axis([0,time,0,220]);
+title('CTMC and ODE SIR with disease-related deaths')
+ylabel('I(t)');
+xlabel('Time (days)')
+hold off
