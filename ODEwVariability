@@ -1,0 +1,14 @@
+clear all;
+
+% parameter values
+
+
+
+
+
+
+
+f = @(params) [Lambda(t) - beta(t)*S*I/N - mu*S ...
+    beta(t)*S*I/N - (mu + gamma)*I ...
+    gamma*I - mu*R ...
+    Lambda(t) - mu*N]
