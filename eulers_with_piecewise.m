@@ -33,7 +33,7 @@ dt=0.01; time=100;  outbreak=50;
 %sim=10^5; %use for calc of dis extinction
 % ODE Model (Euler's Method)
 
-q(1)=s0_w; s(1)=i0_w; a(1)=r0_w; Nw=q(1)+s(1)+a(1);
+q(1)=s0_w; s(1)=i0_w; a(1)=r0_w; Nw(1)=q(1)+s(1)+a(1);
 
 for k=1:time/dt
    if sin(k*(pi/180))-.5>0;
@@ -41,16 +41,16 @@ for k=1:time/dt
    elseif sin(k*(pi/180))-.5<=0;
        b_w=0;
    end
-  w1=Nw*b_w-beta_ww*q(k)*s(k)/Nw-m_w*q(k);
-  w2=beta_ww*q(k)*s(k)/Nw-(gamma_w+m_w)*s(k);
+  w1=Nw(k)*b_w-beta_ww*q(k)*s(k)/Nw(k)-m_w*q(k);
+  w2=beta_ww*q(k)*s(k)/Nw(k)-(gamma_w+m_w)*s(k);
   w3=gamma_w*s(k)-m_w*a(k);
   q(k+1)=q(k)+dt*w1;
   s(k+1)=s(k)+dt*w2;
   a(k+1)=a(k)+dt*w3;
-  Nw=q(k+1)+s(k+1)+a(k+1);
+  Nw(k+1)=q(k+1)+s(k+1)+a(k+1);
 end
 
-plot([0:dt:time],q,'k--',[0:dt:time],s,'b-.',[0:dt:time],a,'r--','LineWidth',2);
+plot([0:dt:time],q,'k--',[0:dt:time],s,'b-.',[0:dt:time],a, 'g--', [0:dt:time], Nw,'r--','LineWidth',2);
 axis([0,time,0,1000]);
 title('ODE SIR with periodic birth rate')
 legend('susceptible','infected','recovered')
