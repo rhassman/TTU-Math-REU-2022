@@ -1,0 +1,167 @@
+dbstop if error
+clear all
+close all
+set(0,'DefaultAxesFontSize', 18)
+set(gca,'fontsize',18);
+%Parameters and Initial Condition
+
+i0_w=20;i0_d1=0; i0_h1=0; t0_d1=0; %initial infected
+i0_d2=0; i0_h2=0; t0_d2=0;
+N0_w=1000; N0_d1=1000; N0_h1=1000; %Initial population
+N0_d2=1000; N0_h2=1000;
+r0_w=0; r0_d1=0; r0_h1=0; %initial recovered
+r0_d2=0; r0_h2=0;
+s0_w=N0_w-i0_w; s0_d1=N0_d1-i0_d1; s0_h1=N0_h1-i0_h1; %initial susceptible
+s0_d2=N0_d2-i0_d2; s0_h2=N0_h2-i0_h2;
+
+amp_bww=-0.5; beta_ww0 = 0.89;
+amp_bwd1=-.51; amp_bwd2=.51; beta_wd0=.51; 
+beta_dd=.89; beta_td=.5; beta_th=.207; beta_hh=.078; %transmission rates
+gamma_w=52/360; gamma_d=52/360; gamma_h=52/360; %recovery rates
+mu_dt=.499; %mutation to human transmissable 
+m_w=.00082; m_d=.00082; m_h=.009; %death rates
+b_d1=.00082*N0_d1; b_h1=N0_h1*0.0118; %birth rates
+b_d2=.00082*N0_d2; b_h2=N0_h2*0.0118;
+dt=.00023844;
+
+
+totext=0; % count when i==0;
+%Number of sampe paths, time step, and end time
+sim=100;  time=2000;  outbreak=50;
+%sim=10^5; %use for calc of dis extinction
+% ODE Model (Euler's Method)
+beta_ww = @(k) amp_bww*sin(k*dt*(3.14/180))+beta_ww0;
+beta_wd1 = @(k) beta_wd0*sin(k*dt*(3.14/180))+beta_wd0;
+beta_wd2 = @(k) -1*beta_wd0*sin(k*dt*(3.14/180))+beta_wd0;
+q(1)=s0_w; s(1)=i0_w; a(1)=r0_w; Nw=q(1)+s(1)+a(1);
+w1(1)=s0_d1; u1(1)=i0_d1; n1(1)=t0_d1; v1(1)=r0_d1; Nd1=w1(1)+u1(1)+n1(1)+v1(1);
+x1(1)=s0_h1; y1(1)=i0_h1; z1(1)=r0_h1; Nh1=x1(1)+y1(1)+z1(1);
+w2(1)=s0_d2; u2(1)=i0_d2; n2(1)=t0_d2; v2(1)=r0_d2; Nd2=w2(1)+u2(1)+n2(1)+v2(1);
+x2(1)=s0_h2; y2(1)=i0_h2; z2(1)=r0_h2; Nh2=x2(1)+y2(1)+z2(1);
+for k=1:time/dt
+   if sin(k*dt*(3.14/180))-.5>0
+       b_w=.0025;
+   elseif sin(k*dt*(3.14/180))-.5<=0
+       b_w=0;
+   end
+  
+  ws=Nw*b_w-((beta_ww(k)*q(k)*s(k))/Nw)-m_w*q(k);
+  wi=((beta_ww(k)*q(k)*s(k))/Nw)-(gamma_w+m_w)*s(k);
+  wr=gamma_w*s(k)-m_w*a(k);
+ %patch 1
+  ds1=b_d1-((beta_dd*w1(k)*u1(k))/Nd1)-((beta_wd1(k)*w1(k)*s(k))/Nd1)-((beta_td*w1(k)*n1(k))/Nd1)-m_d*w1(k);
+  di1=((beta_dd*w1(k)*u1(k))/Nd1)+((beta_wd1(k)*w1(k)*s(k))/Nd1)-(mu_dt+gamma_d+m_d)*u1(k);
+  dt1=((beta_td*w1(k)*n1(k))/Nd1)+mu_dt*u1(k)-(gamma_d+m_d)*n1(k);
+  dr1=gamma_d*(u1(k)+n1(k))-m_d*v1(k);
+  hs1=b_h1-((beta_hh*x1(k)*y1(k))/Nh1)-((beta_th*x1(k)*n1(k))/Nh1)-m_h*x1(k);
+  hi1=((beta_hh*x1(k)*y1(k))/Nh1)+((beta_th*x1(k)*n1(k))/Nh1)-(gamma_h+m_h)*y1(k);
+  hr1=gamma_h*y1(k)-m_h*z1(k);
+%patch 2
+  ds2=b_d2-((beta_dd*w2(k)*u2(k))/Nd2)-((beta_wd2(k)*w2(k)*s(k))/Nd2)-((beta_td*w2(k)*n2(k))/Nd2)-m_d*w2(k);
+  di2=((beta_dd*w2(k)*u2(k))/Nd2)+((beta_wd2(k)*w2(k)*s(k))/Nd2)-(mu_dt+gamma_d+m_d)*u2(k);
+  dt2=((beta_td*w2(k)*n2(k))/Nd2)+mu_dt*u2(k)-(gamma_d+m_d)*n2(k);
+  dr2=gamma_d*(u2(k)+n2(k))-m_d*v2(k);
+  hs2=b_h2-((beta_hh*x2(k)*y2(k))/Nh2)-((beta_th*x2(k)*n2(k))/Nh2)-m_h*x2(k);
+  hi2=((beta_hh*x2(k)*y2(k))/Nh2)+((beta_th*x2(k)*n2(k))/Nh2)-(gamma_h+m_h)*y2(k);
+  hr2=gamma_h*y2(k)-m_h*z2(k);
+ 
+  q(k+1)=q(k)+dt*ws;
+  s(k+1)=s(k)+dt*wi;
+  a(k+1)=a(k)+dt*wr;
+  %patch 1
+  w1(k+1)=w1(k)+dt*ds1;
+  u1(k+1)=u1(k)+dt*di1;
+  n1(k+1)=n1(k)+dt*dt1;
+  v1(k+1)=v1(k)+dt*dr1;
+  x1(k+1)=x1(k)+dt*hs1;
+  y1(k+1)=y1(k)+dt*hi1;
+  z1(k+1)=z1(k)+dt*hr1;
+  %patch 2
+  w2(k+1)=w2(k)+dt*ds2;
+  u2(k+1)=u2(k)+dt*di2;
+  n2(k+1)=n2(k)+dt*dt2;
+  v2(k+1)=v2(k)+dt*dr2;
+  x2(k+1)=x2(k)+dt*hs2;
+  y2(k+1)=y2(k)+dt*hi2;
+  z2(k+1)=z2(k)+dt*hr2;
+
+  Nw=q(k+1)+s(k+1)+a(k+1);
+  Nd1=w1(k+1)+u1(k+1)+n1(k+1)+v1(k+1);
+  Nh1=x1(k+1)+y1(k+1)+z1(k+1);
+  Nd2=w2(k+1)+u2(k+1)+n2(k+1)+v2(k+1);
+  Nh2=x2(k+1)+y2(k+1)+z2(k+1);
+end
+
+R0w=beta_ww0/(gamma_w+m_w) % wild birds
+R0d=beta_dd/(gamma_d+mu_dt+m_d) % domestic 
+R0t=beta_td/(m_d+gamma_d)% transmissible to domestic
+R0h=beta_hh/(gamma_h+m_h) % humans
+
+%Plot of wild birds, domestic, humans 
+figure(1)
+
+subplot(1,3,1)
+plot([0:dt:time],q,'k-',[0:dt:time],s,'b--',[0:dt:time],a,'g-.','Linewidth',2)
+legend('S_w','I_w','R_w')
+title('Wild')
+axis([0,time,0,2005]);
+xlabel('days')
+
+subplot(1,3,2)
+plot([0:dt:time],w1,'k-',[0:dt:time],u1,'b--',[0:dt:time],n1,'r:',[0:dt:time],v1,'g-.','Linewidth',2)
+legend('S_d','I_d','T_d','R_d')
+title('Domestic')
+axis([0,time,0,b_d1/m_d+5]);
+xlabel('days')
+
+subplot(1,3,3)
+plot([0:dt:time],x1,'k-',[0:dt:time],y1,'b--',[0:dt:time],z1,'g-.','Linewidth',2)
+legend('S_h','I_h','R_h');
+title('Human')
+axis([0,time,0,b_h1/m_h+5]);
+xlabel('days')
+sgtitle('Patch 1')
+
+figure(2)
+
+subplot(1,3,1)
+plot([0:dt:time],q,'k-',[0:dt:time],s,'b--',[0:dt:time],a,'g-.','Linewidth',2)
+legend('S_w','I_w','R_w')
+title('Wild')
+axis([0,time,0,2005]);
+xlabel('days')
+
+subplot(1,3,2)
+plot([0:dt:time],w2,'k-',[0:dt:time],u2,'b--',[0:dt:time],n2,'r:',[0:dt:time],v2,'g-.','Linewidth',2)
+legend('S_d','I_d','T_d','R_d')
+title('Domestic')
+axis([0,time,0,b_d2/m_d+5]);
+xlabel('days')
+
+subplot(1,3,3)
+plot([0:dt:time],x2,'k-',[0:dt:time],y2,'b--',[0:dt:time],z2,'g-.','Linewidth',2)
+legend('S_h','I_h','R_h');
+title('Human')
+axis([0,time,0,b_h2/m_h+5]);
+xlabel('days')
+sgtitle('Patch 2')
+
+
+figure(3)
+
+plot([0:dt:time],s,'k-',[0:dt:time],u1,'b:',[0:dt:time],n1,'g-.',[0:dt:time],y1,'r--','Linewidth',2)
+axis([0,time,0,1000]);
+title('Patch 1 Infections')
+legend('wild','domestic','transmissible','humans')
+ylabel('I(t)');
+xlabel('days')
+
+figure(4)
+
+plot([0:dt:time],s,'k-',[0:dt:time],u2,'b:',[0:dt:time],n2,'g-.',[0:dt:time],y2,'r-.','Linewidth',2)
+axis([0,time,0,1000]);
+title('Patch 2 Infections')
+legend('wild','domestic','transmissable','human')
+ylabel('I(t)');
+xlabel('days')
+hold off
