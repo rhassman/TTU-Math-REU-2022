@@ -145,6 +145,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_h1(g,j+1)=s_h1(g,j);
     i_h1(g,j+1)=i_h1(g,j);
     r_h1(g,j+1)=r_h1(g,j);
+    s_d2(g,j+1)=s_d2(g,j);
+    i_d2(g,j+1)=i_d2(g,j);
+    t_d2(g,j+1)=t_d2(g,j);
+    r_d2(g,j+1)=r_d2(g,j);
+    s_h2(g,j+1)=s_h2(g,j);
+    i_h2(g,j+1)=i_h2(g,j);
+    r_h2(g,j+1)=r_h2(g,j);
   elseif u2>ev1 && u2<=ev2 %death of sw
     %disp('death of sw')
     s_w(g,j+1)=s_w(g,j)-1;
@@ -157,6 +164,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_h1(g,j+1)=s_h1(g,j);
     i_h1(g,j+1)=i_h1(g,j);
     r_h1(g,j+1)=r_h1(g,j);
+    s_d2(g,j+1)=s_d2(g,j);
+    i_d2(g,j+1)=i_d2(g,j);
+    t_d2(g,j+1)=t_d2(g,j);
+    r_d2(g,j+1)=r_d2(g,j);
+    s_h2(g,j+1)=s_h2(g,j);
+    i_h2(g,j+1)=i_h2(g,j);
+    r_h2(g,j+1)=r_h2(g,j);
   elseif u2>ev2 && u2<=ev3 %death of Iw
     %disp('death of Iw')
     s_w(g,j+1)=s_w(g,j);
@@ -169,6 +183,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_h1(g,j+1)=s_h1(g,j);
     i_h1(g,j+1)=i_h1(g,j);
     r_h1(g,j+1)=r_h1(g,j);
+    s_d2(g,j+1)=s_d2(g,j);
+    i_d2(g,j+1)=i_d2(g,j);
+    t_d2(g,j+1)=t_d2(g,j);
+    r_d2(g,j+1)=r_d2(g,j);
+    s_h2(g,j+1)=s_h2(g,j);
+    i_h2(g,j+1)=i_h2(g,j);
+    r_h2(g,j+1)=r_h2(g,j);
   elseif u2>ev3 && u2<=ev4 %infection of wild bird
     %disp('infection of wild bird')
     s_w(g,j+1)=s_w(g,j)-1;
@@ -181,6 +202,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_h1(g,j+1)=s_h1(g,j);
     i_h1(g,j+1)=i_h1(g,j);
     r_h1(g,j+1)=r_h1(g,j);
+    s_d2(g,j+1)=s_d2(g,j);
+    i_d2(g,j+1)=i_d2(g,j);
+    t_d2(g,j+1)=t_d2(g,j);
+    r_d2(g,j+1)=r_d2(g,j);
+    s_h2(g,j+1)=s_h2(g,j);
+    i_h2(g,j+1)=i_h2(g,j);
+    r_h2(g,j+1)=r_h2(g,j);
   elseif u2>ev4 && u2<=ev5 %recovery of wild bird
     %disp('recovery of wild bird')
     s_w(g,j+1)=s_w(g,j);
@@ -193,6 +221,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_h1(g,j+1)=s_h1(g,j);
     i_h1(g,j+1)=i_h1(g,j);
     r_h1(g,j+1)=r_h1(g,j);
+    s_d2(g,j+1)=s_d2(g,j);
+    i_d2(g,j+1)=i_d2(g,j);
+    t_d2(g,j+1)=t_d2(g,j);
+    r_d2(g,j+1)=r_d2(g,j);
+    s_h2(g,j+1)=s_h2(g,j);
+    i_h2(g,j+1)=i_h2(g,j);
+    r_h2(g,j+1)=r_h2(g,j);
   elseif u2>ev5 && u2<=ev6 %death of rw
     %disp('death of rw')
     s_w(g,j+1)=s_w(g,j);
@@ -205,6 +240,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_h1(g,j+1)=s_h1(g,j);
     i_h1(g,j+1)=i_h1(g,j);
     r_h1(g,j+1)=r_h1(g,j);
+    s_d2(g,j+1)=s_d2(g,j);
+    i_d2(g,j+1)=i_d2(g,j);
+    t_d2(g,j+1)=t_d2(g,j);
+    r_d2(g,j+1)=r_d2(g,j);
+    s_h2(g,j+1)=s_h2(g,j);
+    i_h2(g,j+1)=i_h2(g,j);
+    r_h2(g,j+1)=r_h2(g,j);
   elseif u2>ev6 && u2<=ev7 %birth of chicken
     %disp('birth of chicken')
     s_w(g,j+1)=s_w(g,j);
@@ -217,6 +259,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_h1(g,j+1)=s_h1(g,j);
     i_h1(g,j+1)=i_h1(g,j);
     r_h1(g,j+1)=r_h1(g,j);
+    s_d2(g,j+1)=s_d2(g,j);
+    i_d2(g,j+1)=i_d2(g,j);
+    t_d2(g,j+1)=t_d2(g,j);
+    r_d2(g,j+1)=r_d2(g,j);
+    s_h2(g,j+1)=s_h2(g,j);
+    i_h2(g,j+1)=i_h2(g,j);
+    r_h2(g,j+1)=r_h2(g,j);
   elseif u2>ev7 && u2<=ev8 %infection of sd by id or iw
     %disp('infection of sd by id or iw')
     s_w(g,j+1)=s_w(g,j);
@@ -229,6 +278,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_h1(g,j+1)=s_h1(g,j);
     i_h1(g,j+1)=i_h1(g,j);
     r_h1(g,j+1)=r_h1(g,j);
+    s_d2(g,j+1)=s_d2(g,j);
+    i_d2(g,j+1)=i_d2(g,j);
+    t_d2(g,j+1)=t_d2(g,j);
+    r_d2(g,j+1)=r_d2(g,j);
+    s_h2(g,j+1)=s_h2(g,j);
+    i_h2(g,j+1)=i_h2(g,j);
+    r_h2(g,j+1)=r_h2(g,j);
   elseif u2>ev8 && u2<=ev9 %infection of sd by td
     %disp('infection of sd by td')
     s_w(g,j+1)=s_w(g,j);
@@ -241,6 +297,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_h1(g,j+1)=s_h1(g,j);
     i_h1(g,j+1)=i_h1(g,j);
     r_h1(g,j+1)=r_h1(g,j);
+    s_d2(g,j+1)=s_d2(g,j);
+    i_d2(g,j+1)=i_d2(g,j);
+    t_d2(g,j+1)=t_d2(g,j);
+    r_d2(g,j+1)=r_d2(g,j);
+    s_h2(g,j+1)=s_h2(g,j);
+    i_h2(g,j+1)=i_h2(g,j);
+    r_h2(g,j+1)=r_h2(g,j);
   elseif u2>ev9 && u2<=ev10 %recovery of id
     %disp('recovery of id')
     s_w(g,j+1)=s_w(g,j);
@@ -253,6 +316,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_h1(g,j+1)=s_h1(g,j);
     i_h1(g,j+1)=i_h1(g,j);
     r_h1(g,j+1)=r_h1(g,j);
+    s_d2(g,j+1)=s_d2(g,j);
+    i_d2(g,j+1)=i_d2(g,j);
+    t_d2(g,j+1)=t_d2(g,j);
+    r_d2(g,j+1)=r_d2(g,j);
+    s_h2(g,j+1)=s_h2(g,j);
+    i_h2(g,j+1)=i_h2(g,j);
+    r_h2(g,j+1)=r_h2(g,j);
   elseif u2>ev10 && u2<=ev11 %recovery of td
     %disp('recovery of td')
     s_w(g,j+1)=s_w(g,j);
@@ -265,6 +335,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_h1(g,j+1)=s_h1(g,j);
     i_h1(g,j+1)=i_h1(g,j);
     r_h1(g,j+1)=r_h1(g,j);
+    s_d2(g,j+1)=s_d2(g,j);
+    i_d2(g,j+1)=i_d2(g,j);
+    t_d2(g,j+1)=t_d2(g,j);
+    r_d2(g,j+1)=r_d2(g,j);
+    s_h2(g,j+1)=s_h2(g,j);
+    i_h2(g,j+1)=i_h2(g,j);
+    r_h2(g,j+1)=r_h2(g,j);
   elseif u2>ev11 && u2<=ev12 %death of sd
     %disp('death of sd')
     s_w(g,j+1)=s_w(g,j);
@@ -277,6 +354,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_h1(g,j+1)=s_h1(g,j);
     i_h1(g,j+1)=i_h1(g,j);
     r_h1(g,j+1)=r_h1(g,j);
+    s_d2(g,j+1)=s_d2(g,j);
+    i_d2(g,j+1)=i_d2(g,j);
+    t_d2(g,j+1)=t_d2(g,j);
+    r_d2(g,j+1)=r_d2(g,j);
+    s_h2(g,j+1)=s_h2(g,j);
+    i_h2(g,j+1)=i_h2(g,j);
+    r_h2(g,j+1)=r_h2(g,j);
   elseif u2>ev12 && u2<=ev13 %death of id
     %disp('death of id')
     s_w(g,j+1)=s_w(g,j);
@@ -289,6 +373,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_h1(g,j+1)=s_h1(g,j);
     i_h1(g,j+1)=i_h1(g,j);
     r_h1(g,j+1)=r_h1(g,j);
+    s_d2(g,j+1)=s_d2(g,j);
+    i_d2(g,j+1)=i_d2(g,j);
+    t_d2(g,j+1)=t_d2(g,j);
+    r_d2(g,j+1)=r_d2(g,j);
+    s_h2(g,j+1)=s_h2(g,j);
+    i_h2(g,j+1)=i_h2(g,j);
+    r_h2(g,j+1)=r_h2(g,j);
   elseif u2>ev13 && u2<=ev14 %death of td
     %disp('death of td')
     s_w(g,j+1)=s_w(g,j);
@@ -301,6 +392,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_h1(g,j+1)=s_h1(g,j);
     i_h1(g,j+1)=i_h1(g,j);
     r_h1(g,j+1)=r_h1(g,j);
+    s_d2(g,j+1)=s_d2(g,j);
+    i_d2(g,j+1)=i_d2(g,j);
+    t_d2(g,j+1)=t_d2(g,j);
+    r_d2(g,j+1)=r_d2(g,j);
+    s_h2(g,j+1)=s_h2(g,j);
+    i_h2(g,j+1)=i_h2(g,j);
+    r_h2(g,j+1)=r_h2(g,j);
   elseif u2>ev14 && u2<=ev15 %death of rd
     %disp('death of rd')
     s_w(g,j+1)=s_w(g,j);
@@ -313,6 +411,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_h1(g,j+1)=s_h1(g,j);
     i_h1(g,j+1)=i_h1(g,j);
     r_h1(g,j+1)=r_h1(g,j);
+    s_d2(g,j+1)=s_d2(g,j);
+    i_d2(g,j+1)=i_d2(g,j);
+    t_d2(g,j+1)=t_d2(g,j);
+    r_d2(g,j+1)=r_d2(g,j);
+    s_h2(g,j+1)=s_h2(g,j);
+    i_h2(g,j+1)=i_h2(g,j);
+    r_h2(g,j+1)=r_h2(g,j);
   elseif u2>ev15 && u2<=ev16 %mutation of id
     %disp('mutation of id')
     s_w(g,j+1)=s_w(g,j);
@@ -325,6 +430,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_h1(g,j+1)=s_h1(g,j);
     i_h1(g,j+1)=i_h1(g,j);
     r_h1(g,j+1)=r_h1(g,j);
+    s_d2(g,j+1)=s_d2(g,j);
+    i_d2(g,j+1)=i_d2(g,j);
+    t_d2(g,j+1)=t_d2(g,j);
+    r_d2(g,j+1)=r_d2(g,j);
+    s_h2(g,j+1)=s_h2(g,j);
+    i_h2(g,j+1)=i_h2(g,j);
+    r_h2(g,j+1)=r_h2(g,j);
   elseif u2>ev16 && u2<=ev17 %birth of human
     %disp('birth of human')
     s_w(g,j+1)=s_w(g,j);
@@ -337,6 +449,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_h1(g,j+1)=s_h1(g,j)+1;
     i_h1(g,j+1)=i_h1(g,j);
     r_h1(g,j+1)=r_h1(g,j);
+    s_d2(g,j+1)=s_d2(g,j);
+    i_d2(g,j+1)=i_d2(g,j);
+    t_d2(g,j+1)=t_d2(g,j);
+    r_d2(g,j+1)=r_d2(g,j);
+    s_h2(g,j+1)=s_h2(g,j);
+    i_h2(g,j+1)=i_h2(g,j);
+    r_h2(g,j+1)=r_h2(g,j);
   elseif u2>ev17 && u2<=ev18 %infection of human
     %disp('infection of human')
     s_w(g,j+1)=s_w(g,j);
@@ -349,6 +468,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_h1(g,j+1)=s_h1(g,j)-1;
     i_h1(g,j+1)=i_h1(g,j)+1;
     r_h1(g,j+1)=r_h1(g,j);
+    s_d2(g,j+1)=s_d2(g,j);
+    i_d2(g,j+1)=i_d2(g,j);
+    t_d2(g,j+1)=t_d2(g,j);
+    r_d2(g,j+1)=r_d2(g,j);
+    s_h2(g,j+1)=s_h2(g,j);
+    i_h2(g,j+1)=i_h2(g,j);
+    r_h2(g,j+1)=r_h2(g,j);
   elseif u2>ev18 && u2<=ev19 %death of sh
     %disp('death of sh')
     s_w(g,j+1)=s_w(g,j);
@@ -361,6 +487,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_h1(g,j+1)=s_h1(g,j)-1;
     i_h1(g,j+1)=i_h1(g,j);
     r_h1(g,j+1)=r_h1(g,j);
+    s_d2(g,j+1)=s_d2(g,j);
+    i_d2(g,j+1)=i_d2(g,j);
+    t_d2(g,j+1)=t_d2(g,j);
+    r_d2(g,j+1)=r_d2(g,j);
+    s_h2(g,j+1)=s_h2(g,j);
+    i_h2(g,j+1)=i_h2(g,j);
+    r_h2(g,j+1)=r_h2(g,j);
   elseif u2>ev19 && u2<=ev20 %death of ih
     %disp('death of ih')
     s_w(g,j+1)=s_w(g,j);
@@ -373,6 +506,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_h1(g,j+1)=s_h1(g,j);
     i_h1(g,j+1)=i_h1(g,j)-1;
     r_h1(g,j+1)=r_h1(g,j);
+    s_d2(g,j+1)=s_d2(g,j);
+    i_d2(g,j+1)=i_d2(g,j);
+    t_d2(g,j+1)=t_d2(g,j);
+    r_d2(g,j+1)=r_d2(g,j);
+    s_h2(g,j+1)=s_h2(g,j);
+    i_h2(g,j+1)=i_h2(g,j);
+    r_h2(g,j+1)=r_h2(g,j);
   elseif u2>ev20 && u2<=ev21 %death of rh
     %disp('death of rh')
     s_w(g,j+1)=s_w(g,j);
@@ -385,6 +525,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_h1(g,j+1)=s_h1(g,j);
     i_h1(g,j+1)=i_h1(g,j);
     r_h1(g,j+1)=r_h1(g,j)-1;
+    s_d2(g,j+1)=s_d2(g,j);
+    i_d2(g,j+1)=i_d2(g,j);
+    t_d2(g,j+1)=t_d2(g,j);
+    r_d2(g,j+1)=r_d2(g,j);
+    s_h2(g,j+1)=s_h2(g,j);
+    i_h2(g,j+1)=i_h2(g,j);
+    r_h2(g,j+1)=r_h2(g,j);
   elseif u2>ev21 && u2<=ev22 %Recovery of Ih
     %disp('recovery of ih')
     s_w(g,j+1)=s_w(g,j);
@@ -397,6 +544,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_h1(g,j+1)=s_h1(g,j);
     i_h1(g,j+1)=i_h1(g,j)-1;
     r_h1(g,j+1)=r_h1(g,j)+1;
+    s_d2(g,j+1)=s_d2(g,j);
+    i_d2(g,j+1)=i_d2(g,j);
+    t_d2(g,j+1)=t_d2(g,j);
+    r_d2(g,j+1)=r_d2(g,j);
+    s_h2(g,j+1)=s_h2(g,j);
+    i_h2(g,j+1)=i_h2(g,j);
+    r_h2(g,j+1)=r_h2(g,j);
   
   %Patch 2 Events
   elseif u2>ev22 && u2<=ev23 %birth of chicken
@@ -404,6 +558,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_w(g,j+1)=s_w(g,j);
     i_w(g,j+1)=i_w(g,j);
     r_w(g,j+1)=r_w(g,j);
+    s_d1(g,j+1)=s_d2(g,j);
+    i_d1(g,j+1)=i_d2(g,j);
+    t_d1(g,j+1)=t_d2(g,j);
+    r_d1(g,j+1)=r_d2(g,j);
+    s_h1(g,j+1)=s_h2(g,j);
+    i_h1(g,j+1)=i_h2(g,j);
+    r_h1(g,j+1)=r_h2(g,j);
     s_d2(g,j+1)=s_d2(g,j)+1;
     i_d2(g,j+1)=i_d2(g,j);
     t_d2(g,j+1)=t_d2(g,j);
@@ -416,6 +577,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_w(g,j+1)=s_w(g,j);
     i_w(g,j+1)=i_w(g,j);
     r_w(g,j+1)=r_w(g,j);
+    s_d1(g,j+1)=s_d2(g,j);
+    i_d1(g,j+1)=i_d2(g,j);
+    t_d1(g,j+1)=t_d2(g,j);
+    r_d1(g,j+1)=r_d2(g,j);
+    s_h1(g,j+1)=s_h2(g,j);
+    i_h1(g,j+1)=i_h2(g,j);
+    r_h1(g,j+1)=r_h2(g,j);
     s_d2(g,j+1)=s_d2(g,j)-1;
     i_d2(g,j+1)=i_d2(g,j)+1;
     t_d2(g,j+1)=t_d2(g,j);
@@ -428,6 +596,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_w(g,j+1)=s_w(g,j);
     i_w(g,j+1)=i_w(g,j);
     r_w(g,j+1)=r_w(g,j);
+    s_d1(g,j+1)=s_d2(g,j);
+    i_d1(g,j+1)=i_d2(g,j);
+    t_d1(g,j+1)=t_d2(g,j);
+    r_d1(g,j+1)=r_d2(g,j);
+    s_h1(g,j+1)=s_h2(g,j);
+    i_h1(g,j+1)=i_h2(g,j);
+    r_h1(g,j+1)=r_h2(g,j);
     s_d2(g,j+1)=s_d2(g,j)-1;
     i_d2(g,j+1)=i_d2(g,j);
     t_d2(g,j+1)=t_d2(g,j)+1;
@@ -440,6 +615,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_w(g,j+1)=s_w(g,j);
     i_w(g,j+1)=i_w(g,j);
     r_w(g,j+1)=r_w(g,j);
+    s_d1(g,j+1)=s_d2(g,j);
+    i_d1(g,j+1)=i_d2(g,j);
+    t_d1(g,j+1)=t_d2(g,j);
+    r_d1(g,j+1)=r_d2(g,j);
+    s_h1(g,j+1)=s_h2(g,j);
+    i_h1(g,j+1)=i_h2(g,j);
+    r_h1(g,j+1)=r_h2(g,j);
     s_d2(g,j+1)=s_d2(g,j);
     i_d2(g,j+1)=i_d2(g,j)-1;
     t_d2(g,j+1)=t_d2(g,j);
@@ -452,6 +634,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_w(g,j+1)=s_w(g,j);
     i_w(g,j+1)=i_w(g,j);
     r_w(g,j+1)=r_w(g,j);
+    s_d1(g,j+1)=s_d2(g,j);
+    i_d1(g,j+1)=i_d2(g,j);
+    t_d1(g,j+1)=t_d2(g,j);
+    r_d1(g,j+1)=r_d2(g,j);
+    s_h1(g,j+1)=s_h2(g,j);
+    i_h1(g,j+1)=i_h2(g,j);
+    r_h1(g,j+1)=r_h2(g,j);
     s_d2(g,j+1)=s_d2(g,j);
     i_d2(g,j+1)=i_d2(g,j);
     t_d2(g,j+1)=t_d2(g,j)-1;
@@ -464,6 +653,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_w(g,j+1)=s_w(g,j);
     i_w(g,j+1)=i_w(g,j);
     r_w(g,j+1)=r_w(g,j);
+    s_d1(g,j+1)=s_d2(g,j);
+    i_d1(g,j+1)=i_d2(g,j);
+    t_d1(g,j+1)=t_d2(g,j);
+    r_d1(g,j+1)=r_d2(g,j);
+    s_h1(g,j+1)=s_h2(g,j);
+    i_h1(g,j+1)=i_h2(g,j);
+    r_h1(g,j+1)=r_h2(g,j);
     s_d2(g,j+1)=s_d2(g,j)-1;
     i_d2(g,j+1)=i_d2(g,j);
     t_d2(g,j+1)=t_d2(g,j);
@@ -476,6 +672,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_w(g,j+1)=s_w(g,j);
     i_w(g,j+1)=i_w(g,j);
     r_w(g,j+1)=r_w(g,j);
+    s_d1(g,j+1)=s_d2(g,j);
+    i_d1(g,j+1)=i_d2(g,j);
+    t_d1(g,j+1)=t_d2(g,j);
+    r_d1(g,j+1)=r_d2(g,j);
+    s_h1(g,j+1)=s_h2(g,j);
+    i_h1(g,j+1)=i_h2(g,j);
+    r_h1(g,j+1)=r_h2(g,j);
     s_d2(g,j+1)=s_d2(g,j);
     i_d2(g,j+1)=i_d2(g,j)-1;
     t_d2(g,j+1)=t_d2(g,j);
@@ -488,6 +691,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_w(g,j+1)=s_w(g,j);
     i_w(g,j+1)=i_w(g,j);
     r_w(g,j+1)=r_w(g,j);
+    s_d1(g,j+1)=s_d2(g,j);
+    i_d1(g,j+1)=i_d2(g,j);
+    t_d1(g,j+1)=t_d2(g,j);
+    r_d1(g,j+1)=r_d2(g,j);
+    s_h1(g,j+1)=s_h2(g,j);
+    i_h1(g,j+1)=i_h2(g,j);
+    r_h1(g,j+1)=r_h2(g,j);
     s_d2(g,j+1)=s_d2(g,j);
     i_d2(g,j+1)=i_d2(g,j);
     t_d2(g,j+1)=t_d2(g,j)-1;
@@ -500,6 +710,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_w(g,j+1)=s_w(g,j);
     i_w(g,j+1)=i_w(g,j);
     r_w(g,j+1)=r_w(g,j);
+    s_d1(g,j+1)=s_d2(g,j);
+    i_d1(g,j+1)=i_d2(g,j);
+    t_d1(g,j+1)=t_d2(g,j);
+    r_d1(g,j+1)=r_d2(g,j);
+    s_h1(g,j+1)=s_h2(g,j);
+    i_h1(g,j+1)=i_h2(g,j);
+    r_h1(g,j+1)=r_h2(g,j);
     s_d2(g,j+1)=s_d2(g,j);
     i_d2(g,j+1)=i_d2(g,j);
     t_d2(g,j+1)=t_d2(g,j);
@@ -512,6 +729,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_w(g,j+1)=s_w(g,j);
     i_w(g,j+1)=i_w(g,j);
     r_w(g,j+1)=r_w(g,j);
+    s_d1(g,j+1)=s_d2(g,j);
+    i_d1(g,j+1)=i_d2(g,j);
+    t_d1(g,j+1)=t_d2(g,j);
+    r_d1(g,j+1)=r_d2(g,j);
+    s_h1(g,j+1)=s_h2(g,j);
+    i_h1(g,j+1)=i_h2(g,j);
+    r_h1(g,j+1)=r_h2(g,j);
     s_d2(g,j+1)=s_d2(g,j);
     i_d2(g,j+1)=i_d2(g,j)-1;
     t_d2(g,j+1)=t_d2(g,j)+1;
@@ -524,6 +748,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_w(g,j+1)=s_w(g,j);
     i_w(g,j+1)=i_w(g,j);
     r_w(g,j+1)=r_w(g,j);
+    s_d1(g,j+1)=s_d2(g,j);
+    i_d1(g,j+1)=i_d2(g,j);
+    t_d1(g,j+1)=t_d2(g,j);
+    r_d1(g,j+1)=r_d2(g,j);
+    s_h1(g,j+1)=s_h2(g,j);
+    i_h1(g,j+1)=i_h2(g,j);
+    r_h1(g,j+1)=r_h2(g,j);
     s_d2(g,j+1)=s_d2(g,j);
     i_d2(g,j+1)=i_d2(g,j);
     t_d2(g,j+1)=t_d2(g,j);
@@ -536,6 +767,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_w(g,j+1)=s_w(g,j);
     i_w(g,j+1)=i_w(g,j);
     r_w(g,j+1)=r_w(g,j);
+    s_d1(g,j+1)=s_d2(g,j);
+    i_d1(g,j+1)=i_d2(g,j);
+    t_d1(g,j+1)=t_d2(g,j);
+    r_d1(g,j+1)=r_d2(g,j);
+    s_h1(g,j+1)=s_h2(g,j);
+    i_h1(g,j+1)=i_h2(g,j);
+    r_h1(g,j+1)=r_h2(g,j);
     s_d2(g,j+1)=s_d2(g,j);
     i_d2(g,j+1)=i_d2(g,j);
     t_d2(g,j+1)=t_d2(g,j);
@@ -548,6 +786,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_w(g,j+1)=s_w(g,j);
     i_w(g,j+1)=i_w(g,j);
     r_w(g,j+1)=r_w(g,j);
+    s_d1(g,j+1)=s_d2(g,j);
+    i_d1(g,j+1)=i_d2(g,j);
+    t_d1(g,j+1)=t_d2(g,j);
+    r_d1(g,j+1)=r_d2(g,j);
+    s_h1(g,j+1)=s_h2(g,j);
+    i_h1(g,j+1)=i_h2(g,j);
+    r_h1(g,j+1)=r_h2(g,j);
     s_d2(g,j+1)=s_d2(g,j);
     i_d2(g,j+1)=i_d2(g,j);
     t_d2(g,j+1)=t_d2(g,j);
@@ -560,6 +805,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_w(g,j+1)=s_w(g,j);
     i_w(g,j+1)=i_w(g,j);
     r_w(g,j+1)=r_w(g,j);
+    s_d1(g,j+1)=s_d2(g,j);
+    i_d1(g,j+1)=i_d2(g,j);
+    t_d1(g,j+1)=t_d2(g,j);
+    r_d1(g,j+1)=r_d2(g,j);
+    s_h1(g,j+1)=s_h2(g,j);
+    i_h1(g,j+1)=i_h2(g,j);
+    r_h1(g,j+1)=r_h2(g,j);
     s_d2(g,j+1)=s_d2(g,j);
     i_d2(g,j+1)=i_d2(g,j);
     t_d2(g,j+1)=t_d2(g,j);
@@ -572,6 +824,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_w(g,j+1)=s_w(g,j);
     i_w(g,j+1)=i_w(g,j);
     r_w(g,j+1)=r_w(g,j);
+    s_d1(g,j+1)=s_d2(g,j);
+    i_d1(g,j+1)=i_d2(g,j);
+    t_d1(g,j+1)=t_d2(g,j);
+    r_d1(g,j+1)=r_d2(g,j);
+    s_h1(g,j+1)=s_h2(g,j);
+    i_h1(g,j+1)=i_h2(g,j);
+    r_h1(g,j+1)=r_h2(g,j);
     s_d2(g,j+1)=s_d2(g,j);
     i_d2(g,j+1)=i_d2(g,j);
     t_d2(g,j+1)=t_d2(g,j);
@@ -584,6 +843,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_w(g,j+1)=s_w(g,j);
     i_w(g,j+1)=i_w(g,j);
     r_w(g,j+1)=r_w(g,j);
+    s_d1(g,j+1)=s_d2(g,j);
+    i_d1(g,j+1)=i_d2(g,j);
+    t_d1(g,j+1)=t_d2(g,j);
+    r_d1(g,j+1)=r_d2(g,j);
+    s_h1(g,j+1)=s_h2(g,j);
+    i_h1(g,j+1)=i_h2(g,j);
+    r_h1(g,j+1)=r_h2(g,j);
     s_d2(g,j+1)=s_d2(g,j);
     i_d2(g,j+1)=i_d2(g,j);
     t_d2(g,j+1)=t_d2(g,j);
@@ -596,6 +862,13 @@ while  i_w(g,j)+i_h1(g,j)+i_d1(g,j)+t_d1(g,j)+i_h2(g,j)+i_d2(g,j)+t_d2(g,j) > 0 
     s_w(g,j+1)=s_w(g,j);
     i_w(g,j+1)=i_w(g,j);
     r_w(g,j+1)=r_w(g,j);
+    s_d1(g,j+1)=s_d2(g,j);
+    i_d1(g,j+1)=i_d2(g,j);
+    t_d1(g,j+1)=t_d2(g,j);
+    r_d1(g,j+1)=r_d2(g,j);
+    s_h1(g,j+1)=s_h2(g,j);
+    i_h1(g,j+1)=i_h2(g,j);
+    r_h1(g,j+1)=r_h2(g,j);
     s_d2(g,j+1)=s_d2(g,j);
     i_d2(g,j+1)=i_d2(g,j);
     t_d2(g,j+1)=t_d2(g,j);
